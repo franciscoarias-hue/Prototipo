@@ -1,0 +1,64 @@
+  console.log
+    🔵 Conectando con Mock Bank... { number: '123', cvv: '123' }
+
+      at PaymentService.create (payment/payment.service.ts:30:15)
+
+  console.log
+    🟢 Pago Aprobado. Contactando Inventario...
+
+      at PaymentService.create (payment/payment.service.ts:43:17)
+
+  console.log
+    ✅ Inventario actualizado. Nuevo stock: 9
+
+      at PaymentService.create (payment/payment.service.ts:60:17)
+
+  console.log
+    🔵 Conectando con Mock Bank... { number: '123', cvv: '123' }
+
+      at PaymentService.create (payment/payment.service.ts:30:15)
+
+  console.warn
+    Fs Pago Declinado por el banco
+
+    [0m [90m 79 |[39m
+     [90m 80 |[39m     [90m// Si el banco declinó[39m
+    [31m[1m>[22m[39m[90m 81 |[39m     console[33m.[39mwarn([32m'Fs Pago Declinado por el banco'[39m)[33m;[39m
+     [90m    |[39m             [31m[1m^[22m[39m
+     [90m 82 |[39m     [36mthrow[39m [36mnew[39m [33mHttpException[39m([32m'Payment declined by bank'[39m[33m,[39m [33mHttpStatus[39m[33m.[39m[33mPAYMENT_REQUIRED[39m)[33m;[39m
+     [90m 83 |[39m   }
+     [90m 84 |[39m[0m
+
+      at PaymentService.create (payment/payment.service.ts:81:13)
+      at Object.<anonymous> (payment/payment.service.spec.ts:79:9)
+
+FAIL src/payment/payment.service.spec.ts
+  PaymentService
+    √ should be defined (13 ms)
+    √ should process approved payment (26 ms)
+    × should reject declined payment (21 ms)
+
+  ● PaymentService › should reject declined payment
+
+    expect(jest.fn()).not.toHaveBeenCalled()
+
+    Expected number of calls: 0
+    Received number of calls: 1
+
+    1: "http://localhost:3000/product/prodId", {"inventario": 9}
+
+    [0m [90m 80 |[39m         expect(mockHttpService[33m.[39mpost)[33m.[39mtoHaveBeenCalled()[33m;[39m
+     [90m 81 |[39m         [90m// Inventory should NOT be updated[39m
+    [31m[1m>[22m[39m[90m 82 |[39m         expect(mockHttpService[33m.[39mpatch)[33m.[39mnot[33m.[39mtoHaveBeenCalled()[33m;[39m
+     [90m    |[39m                                           [31m[1m^[22m[39m
+     [90m 83 |[39m     })[33m;[39m
+     [90m 84 |[39m })[33m;[39m
+     [90m 85 |[39m[0m
+
+      at Object.<anonymous> (payment/payment.service.spec.ts:82:43)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 2 passed, 3 total
+Snapshots:   0 total
+Time:        2.443 s, estimated 3 s
+Ran all test suites matching src/payment/payment.service.spec.ts.

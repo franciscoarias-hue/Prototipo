@@ -1,0 +1,32 @@
+### Crear producto
+POST http://localhost:3000/product
+Content-Type: application/json
+
+{
+  "product_name": "Laptop Gamer",
+  "inventario": 50,
+  "descripcion": "Prueba de inventario",
+  "price": 15000
+}
+
+### Ver todos los productos
+GET http://localhost:3000/product
+
+### Corregir inventario (Reemplazar :id con el ID real)
+PATCH http://localhost:3000/product/692627b12b352545435fd7ea
+Content-Type: application/json
+
+{
+  "inventario": 55
+}
+
+### Actualizar precio (Reemplazar :id con el ID real)
+PATCH http://localhost:3000/product/YOUR_ID_HERE
+Content-Type: application/json
+
+{
+  "price": 16000
+}
+
+### Borrar el producto 
+DELETE http://localhost:3000/product/YOUR_ID_HERE

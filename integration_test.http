@@ -1,0 +1,34 @@
+### 1. Ver Inventario Inicial
+GET http://localhost:3000/product/691fe4b55a2110d88fe7404c
+
+### 2. PAGO APROBADO (Tarjeta termina en 2)
+POST http://localhost:3001/payment
+Content-Type: application/json
+
+{
+    "productId": "691fe4b55a2110d88fe7404c",
+    "quantity": 2,
+    "card": {
+        "number": "411111111112",
+        "cvv": "123"
+    }
+}
+
+### 3. Verificar Inventario (Debe bajar 2)
+GET http://localhost:3000/product/691fe4b55a2110d88fe7404c
+
+### 4. PAGO RECHAZADO (Tarjeta termina en 1)
+POST http://localhost:3001/payment
+Content-Type: application/json
+
+{
+    "productId": "691fe4b55a2110d88fe7404c",
+    "quantity": 5,
+    "card": {
+        "number": "411111111111",
+        "cvv": "123"
+    }
+}
+
+### 5. Verificar Inventario (NO debe bajar)
+GET http://localhost:3000/product/691fe4b55a2110d88fe7404c

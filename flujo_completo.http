@@ -1,0 +1,25 @@
+### 1. Ver Inventario Inicial 
+GET http://localhost:3000/product
+
+### 2. EJECUTAR PAGO (Comprar 3 Laptops)
+POST http://localhost:3001/payment
+Content-Type: application/json
+
+{
+    "payer": {
+        "nombre": "Francisco Emmanuel",
+        "documento": "XYZ123",
+        "creditcard": {
+            "tipo": "VISA",
+            "numero": "411111111111",
+            "cvv": 123
+        }
+    },
+    "producto": {
+        "id": "69260c6657142d05e2cb5826",
+        "cantidad": 3
+    }
+}
+
+### 3. Verificar que el inventario bajó
+GET http://localhost:3000/product

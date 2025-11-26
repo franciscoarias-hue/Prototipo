@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  payments-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '3001:3001'
+    environment:
+      - MONGO_URI=mongodb://host.docker.internal:27017/payments-db
+    # Note: Connects to the existing MongoDB instance on the host via host.docker.internal
